@@ -30,7 +30,7 @@ namespace ScreenyScraper
                 ListViewItem item = new ListViewItem();
                 item.ImageIndex = imageList1.Images.Count -1;
                 item.Text = urlSuffix;
-                listView1.Items.Add(item);
+                listViewDoubleBuffered1.Items.Add(item);
             }
         }
 
@@ -39,7 +39,7 @@ namespace ScreenyScraper
         {
             InitializeComponent();
 
-            listView1.LargeImageList = imageList1;
+            listViewDoubleBuffered1.LargeImageList = imageList1;
             imageList1.ImageSize = new Size(256, 256);
 
             Scraper scraper = new Scraper();
@@ -47,22 +47,13 @@ namespace ScreenyScraper
 
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listViewDoubleBuffered1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listView1.FocusedItem != null)
+            if(listViewDoubleBuffered1.FocusedItem != null)
             {
-                listView1.FocusedItem.Focused = false;
-                listView1.SelectedItems[0].Selected = false;
+                listViewDoubleBuffered1.FocusedItem.Focused = false;
+                listViewDoubleBuffered1.SelectedItems[0].Selected = false;
             }
-
-            //if (listView1.SelectedItems.Count > 0)
-            //{
-            //    foreach (ListViewItem item in listView1.SelectedItems)
-            //    {
-            //        item.Selected = false;
-            //    }
-
-            //}
         }
     }
 

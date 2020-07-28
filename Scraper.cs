@@ -30,6 +30,7 @@ namespace ScreenyScraper
             _formReference = form;
 
             _webClient = new WebClient();
+            _webClient.Proxy = null;
 
             await Task.Factory.StartNew(() => InitScrapeLoop(),
                                 TaskCreationOptions.LongRunning);
